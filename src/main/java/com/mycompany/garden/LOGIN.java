@@ -125,6 +125,7 @@ public class LOGIN extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(217, 206, 159));
         jButton2.setText("CREAR CUENTA");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setText("SALIR");
 
@@ -194,6 +195,13 @@ public class LOGIN extends javax.swing.JFrame {
         // 2. Cerramos y liberamos la memoria de la ventana actual (LOGIN)
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Create_account create = new Create_account();
+        create.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
