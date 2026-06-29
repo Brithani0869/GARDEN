@@ -12,7 +12,7 @@ public class GARDEN {
 
     public static void main(String[] args) {
        try {
-        // Ejecuta esto ANTES de cualquier otra cosa
+      
         com.formdev.flatlaf.FlatLightLaf.setup();
     } catch( Exception ex ) {
         System.err.println( "Error al iniciar FlatLaf: " + ex.getMessage() );
