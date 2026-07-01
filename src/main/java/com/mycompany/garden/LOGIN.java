@@ -23,7 +23,7 @@ public class LOGIN extends javax.swing.JFrame {
         initComponents();
         
         // 2. Ajustamos el tamaño inicial de la ventana
-        this.setSize(800, 600);
+        this.setSize(800, 700);
         this.setLocationRelativeTo(null); // Centra la ventana en la pantalla (Opcional pero recomendado)
         
         // --- CARGA DIRECTA DE LA IMAGEN EN EL COMPONENTE DEL DISEÑADOR ---
@@ -106,7 +106,7 @@ public class LOGIN extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGap(0, 698, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelredondo1Layout = new javax.swing.GroupLayout(panelredondo1);
@@ -150,7 +150,7 @@ public class LOGIN extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(panelredondo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
