@@ -23,47 +23,48 @@ public class MONITORING extends javax.swing.JFrame {
     }
     
    private void reemplazarYEstilarLabels() {
-        // --- 1. ACTIVAR LA OPACIDAD NATIVA ---
-        // Le decimos a Swing que pinte el fondo propio del componente
+       
         jLabel4.setOpaque(true);
         jLabel6.setOpaque(true);
         jLabel9.setOpaque(true);
 
-        // --- 2. ASIGNAR COLORES DE FONDO Y TEXTO ---
-        jLabel4.setBackground(new java.awt.Color(199, 221, 181)); // Verde claro
+        jButton2.setContentAreaFilled(false); 
+        jButton2.setBorderPainted(false);     
+        jButton2.setFocusPainted(false);  
+ 
+        
+        jLabel4.setBackground(new java.awt.Color(199, 221, 181)); 
         jLabel4.setForeground(new java.awt.Color(27, 77, 47));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("45%");
 
-        jLabel6.setBackground(new java.awt.Color(240, 240, 240)); // Gris claro
+        jLabel6.setBackground(new java.awt.Color(240, 240, 240));
         jLabel6.setForeground(new java.awt.Color(27, 77, 47));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("30/06/2026");
 
-        jLabel9.setBackground(new java.awt.Color(240, 240, 240)); // Gris claro
+        jLabel9.setBackground(new java.awt.Color(240, 240, 240)); 
         jLabel9.setForeground(new java.awt.Color(27, 77, 47));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("10:50 PM");
 
-        // --- 3. APLICAR BORDE REDONDEADO CON CORRECCIÓN DE ESQUINAS ---
-        // Usamos un borde personalizado directo sobre los JLabels originales de NetBeans.
-        // Esto recorta las esquinas feas usando el color del fondo del contenedor (jPanel3).
+      
         javax.swing.border.AbstractBorder bordeRedondeado = new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
                 g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
                 
-                // Forzar el color del borde exterior (verde oscuro para la app)
+                
                 g2.setColor(new java.awt.Color(27, 77, 47));
-                g2.setStroke(new java.awt.BasicStroke(2)); // Grosor de línea
-                g2.drawRoundRect(x + 1, y + 1, width - 3, height - 3, 20, 20); // Radio de 20px
+                g2.setStroke(new java.awt.BasicStroke(2));
+                g2.drawRoundRect(x + 1, y + 1, width - 3, height - 3, 20, 20); 
                 
                 g2.dispose();
             }
         };
 
-        // Asignamos el borde a las etiquetas sin moverlas de su lugar asignado por el Layout
+        
         jLabel4.setBorder(bordeRedondeado);
         jLabel6.setBorder(bordeRedondeado);
         jLabel9.setBorder(bordeRedondeado);
@@ -83,6 +84,7 @@ public class MONITORING extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -106,12 +108,16 @@ public class MONITORING extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
         jLabel1.setText("MONITOREO");
 
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brith\\Documents\\GitHub\\GARDEN\\src\\main\\resources\\imagenes\\hojas-de-coca (1).png")); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -120,14 +126,12 @@ public class MONITORING extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
@@ -247,6 +251,7 @@ public class MONITORING extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

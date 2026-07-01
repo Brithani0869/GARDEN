@@ -20,13 +20,16 @@ public class forgotten_password extends javax.swing.JFrame {
         this.setSize(800,700);
         jButton1.setContentAreaFilled(false); 
         jButton1.setBorderPainted(false);     
-        jButton1.setFocusPainted(false); 
+        jButton1.setFocusPainted(false);
+        
         jButton2.setContentAreaFilled(false); 
         jButton2.setBorderPainted(false);     
         jButton2.setFocusPainted(false);
+        
         jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton3.setSize(42, 42);
         jButton3.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
+        
         jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton4.setSize(42, 42);
         jButton4.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
@@ -37,40 +40,39 @@ public class forgotten_password extends javax.swing.JFrame {
         estilarCampoRedondeado(jTextField2);
     }
 
-    // Método Definitivo: Pinta el fondo blanco y el borde redondeado de forma segura
+   
     private void estilarCampoRedondeado(javax.swing.JTextField campo) {
-        // 1. IMPORTANTE: Lo dejamos en TRUE para que Swing no ignore el fondo blanco
+       
         campo.setOpaque(true); 
         
-        // 2. Cambiamos el color de fondo nativo a blanco
+        
         campo.setBackground(java.awt.Color.WHITE);
         
-        // 3. Usamos un borde personalizado que limpia las esquinas del fondo del contenedor padre
+       
         campo.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
                 g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
                 
-                // Buscamos el color de fondo del panel contenedor (el fondo verde de tu app)
                 java.awt.Container parent = c.getParent();
                 if (parent != null) {
                     g2.setColor(parent.getBackground());
                     
-                    // Creamos un área para borrar las esquinas rígidas exteriores
+                    
                     java.awt.geom.Area esquinaExterior = new java.awt.geom.Area(new java.awt.Rectangle(x, y, width, height));
                     esquinaExterior.subtract(new java.awt.geom.Area(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, 15, 15)));
-                    g2.fill(esquinaExterior); // Pinta las esquinas externas del color verde del panel
+                    g2.fill(esquinaExterior); 
                 }
                 
-                // Pintamos el contorno gris redondeado del JTextField
+                
                 g2.setColor(new java.awt.Color(180, 180, 180));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15);
                 
                 g2.dispose();
             }
             
-            // Margen interno para que el texto no toque las curvas del borde
+           
             @Override
             public java.awt.Insets getBorderInsets(java.awt.Component c) {
                 return new java.awt.Insets(6, 12, 6, 12);
@@ -133,16 +135,19 @@ public class forgotten_password extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Sylfaen", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(27, 77, 47));
         jLabel2.setText("Recuperar contraseña");
 
@@ -188,10 +193,6 @@ public class forgotten_password extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(284, 284, 284))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +213,10 @@ public class forgotten_password extends javax.swing.JFrame {
                         .addGap(318, 318, 318))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(316, 316, 316))))
+                        .addGap(316, 316, 316))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(221, 221, 221))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +276,7 @@ public class forgotten_password extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
         
     }//GEN-LAST:event_jButton4ActionPerformed
 

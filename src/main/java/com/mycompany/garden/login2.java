@@ -20,20 +20,19 @@ public class login2 extends javax.swing.JFrame {
     public login2() {
         initComponents();
          this.setSize(800,700);
-         this.setLocationRelativeTo(null); // Centra la ventana en la pantalla (Opcional pero recomendado)
+         this.setLocationRelativeTo(null);
         
-        // --- CARGA DIRECTA DE LA IMAGEN EN EL COMPONENTE DEL DISEÑADOR ---
         try {
-            // Buscamos la imagen en tus recursos de Maven
+            
             java.net.URL rutaImg = getClass().getResource("/imagenes/icono.jpeg");
             
             if (rutaImg != null) {
                 ImageIcon iconoOriginal = new ImageIcon(rutaImg);
-                // Le pasamos la imagen al objeto que ya existe en tu pantalla de NetBeans
+               
                 panelredondo1.setImage(iconoOriginal.getImage());
-                System.out.println("✅ Imagen asignada con éxito a panelredondo1");
+                System.out.println(" Imagen asignada con éxito a panelredondo1");
             } else {
-                System.out.println("❌ ERROR: No se encontró el archivo en /imagenes/icono.jpeg");
+                System.out.println("ERROR: No se encontró el archivo en /imagenes/icono.jpeg");
             }
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen: " + e.getMessage());
@@ -44,54 +43,55 @@ public class login2 extends javax.swing.JFrame {
         jButton3.setSize(42, 42);
         jButton3.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
 
-         jButton2.setContentAreaFilled(false); 
+        jButton2.setContentAreaFilled(false); 
         jButton2.setBorderPainted(false);     
         jButton2.setFocusPainted(false); 
         jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton4.setSize(42, 42);
-        //jButton4.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
+        
+        
         jButton4.setContentAreaFilled(false); 
         jButton4.setBorderPainted(false);     
         jButton4.setFocusPainted(false);  
             
-         estilarCampoRedondeado(jTextField1);
+        estilarCampoRedondeado(jTextField1);
         estilarCampoRedondeado(jPasswordField1);
     }
 
-    // Método Definitivo: Pinta el fondo blanco y el borde redondeado de forma segura
+    
     private void estilarCampoRedondeado(javax.swing.JTextField campo) {
-        // 1. IMPORTANTE: Lo dejamos en TRUE para que Swing no ignore el fondo blanco
+        
         campo.setOpaque(true); 
         
-        // 2. Cambiamos el color de fondo nativo a blanco
+        
         campo.setBackground(java.awt.Color.WHITE);
         
-        // 3. Usamos un borde personalizado que limpia las esquinas del fondo del contenedor padre
+       
         campo.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
                 g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
                 
-                // Buscamos el color de fondo del panel contenedor (el fondo verde de tu app)
+                
                 java.awt.Container parent = c.getParent();
                 if (parent != null) {
                     g2.setColor(parent.getBackground());
                     
-                    // Creamos un área para borrar las esquinas rígidas exteriores
+                    
                     java.awt.geom.Area esquinaExterior = new java.awt.geom.Area(new java.awt.Rectangle(x, y, width, height));
                     esquinaExterior.subtract(new java.awt.geom.Area(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, 15, 15)));
-                    g2.fill(esquinaExterior); // Pinta las esquinas externas del color verde del panel
+                    g2.fill(esquinaExterior); 
                 }
                 
-                // Pintamos el contorno gris redondeado del JTextField
+              
                 g2.setColor(new java.awt.Color(180, 180, 180));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15);
                 
                 g2.dispose();
             }
             
-            // Margen interno para que el texto no toque las curvas del borde
+            
             @Override
             public java.awt.Insets getBorderInsets(java.awt.Component c) {
                 return new java.awt.Insets(6, 12, 6, 12);
@@ -169,7 +169,7 @@ public class login2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(27, 77, 47));
         jLabel3.setText("Correo Electronico");
 
-        jTextField1.setColumns(65);
+        jTextField1.setColumns(67);
         jTextField1.setText("Correo Electronico");
         jTextField1.setBorder(
             new javax.swing.border.AbstractBorder() { @Override public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) { java.awt.Graphics2D g2 = (java.awt.Graphics2D) g; g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON); g2.setColor(java.awt.Color.GRAY); g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15); } @Override public java.awt.Insets getBorderInsets(java.awt.Component c) { return new java.awt.Insets(4, 10, 4, 10); } });
@@ -184,7 +184,7 @@ public class login2 extends javax.swing.JFrame {
         jButton4.setText("Olvide Contraseña");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jPasswordField1.setColumns(65);
+        jPasswordField1.setColumns(67);
         jPasswordField1.setText("jPasswordField1");
 
         javax.swing.GroupLayout panelredondo1Layout = new javax.swing.GroupLayout(panelredondo1);
@@ -217,7 +217,7 @@ public class login2 extends javax.swing.JFrame {
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -263,24 +263,22 @@ public class login2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
         LOGIN nuevaVentana = new LOGIN();
         nuevaVentana.setVisible(true);
         
-        // 2. Cerramos y liberamos la memoria de la ventana actual (LOGIN)
+        
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         grounds CARD = new grounds();
         CARD.setVisible(true);
-        this.dispose();
-        
+        this.dispose();       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
         forgotten_password password = new forgotten_password();
         password.setVisible(true);
         this.dispose();

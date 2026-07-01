@@ -12,10 +12,9 @@ public class ADD extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ADD.class.getName());
     
-    // Agrega esta variable al inicio de la clase ADD
-private grounds pantallaPrincipal;
+    private grounds pantallaPrincipal;
 
-// Modifica el constructor para que reciba 'grounds'
+
 public ADD(grounds pantallaPrincipal) {
     this.pantallaPrincipal = pantallaPrincipal;
     initComponents();
@@ -59,36 +58,28 @@ public ADD(grounds pantallaPrincipal) {
     jPanel3.putClientProperty("FlatLaf.style", "arc: 30;");
     jPanel4.putClientProperty("FlatLaf.style", "arc: 30;");
 }
-
-
-
-     // Método Definitivo: Pinta el fondo blanco y el borde redondeado de forma segura
     private void estilarCampoRedondeado(javax.swing.JTextField campo) {
-        // 1. IMPORTANTE: Lo dejamos en TRUE para que Swing no ignore el fondo blanco
+       
         campo.setOpaque(true); 
         
-        // 2. Cambiamos el color de fondo nativo a blanco
         campo.setBackground(java.awt.Color.WHITE);
         
-        // 3. Usamos un borde personalizado que limpia las esquinas del fondo del contenedor padre
         campo.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
                 g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
                 
-                // Buscamos el color de fondo del panel contenedor (el fondo verde de tu app)
                 java.awt.Container parent = c.getParent();
                 if (parent != null) {
                     g2.setColor(parent.getBackground());
                     
-                    // Creamos un área para borrar las esquinas rígidas exteriores
                     java.awt.geom.Area esquinaExterior = new java.awt.geom.Area(new java.awt.Rectangle(x, y, width, height));
                     esquinaExterior.subtract(new java.awt.geom.Area(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, 15, 15)));
-                    g2.fill(esquinaExterior); // Pinta las esquinas externas del color verde del panel
+                    g2.fill(esquinaExterior); 
                 }
                 
-                // Pintamos el contorno gris redondeado del JTextField
+                
                 g2.setColor(new java.awt.Color(180, 180, 180));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15);
                 
@@ -351,18 +342,16 @@ public ADD(grounds pantallaPrincipal) {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       // OPTIMIZACIÓN: En lugar de crear un new grounds(), usamos el que pasamos por constructor
-        // CORRECCIÓN: Quitamos la validación de 'this.card' y de 'grounds' que causaba el error
-        login2 log = new login2(); // Te regresa de forma segura al Login al presionar Cerrar
+              login2 log = new login2(); 
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       String nombre = jTextField1.getText();
-    String ladoX = jTextField2.getText();
-    String ladoY = jTextField3.getText();
-    String areaCalculada = "0";
+        String nombre = jTextField1.getText();
+        String ladoX = jTextField2.getText();
+        String ladoY = jTextField3.getText();
+        String areaCalculada = "0";
 
     try {
         double x = Double.parseDouble(ladoX);
@@ -372,21 +361,21 @@ public ADD(grounds pantallaPrincipal) {
         areaCalculada = ladoX; 
     }
 
-    // Pasamos los datos recolectados y la pantalla principal a la ventana PLANTS
+    
     PLANTS ventanaPlantas = new PLANTS(this.pantallaPrincipal, nombre, areaCalculada);
     ventanaPlantas.setVisible(true);
-    this.dispose(); // Cerramos ADD temporalmente
+    this.dispose(); 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   // Clase auxiliar para crear paneles redondeados
+   
 class PanelRedondeado extends javax.swing.JPanel {
     private int radio;
     public PanelRedondeado(int radio) {
         this.radio = radio;
-        setOpaque(false); // Hace transparentes las esquinas rectas nativas
+        setOpaque(false); 
     }
     @Override
     protected void paintComponent(java.awt.Graphics g) {

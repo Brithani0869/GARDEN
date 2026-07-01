@@ -16,23 +16,22 @@ import java.awt.Image;
  */
 public class ROUND_PANEL extends JPanel  {
       public ROUND_PANEL() {
-        // Hace transparente el cuadrado exterior para que solo se vea el círculo
-        setOpaque(false); 
+        
     }
-    // Variable para almacenar la imagen del logo
+
     private Image imagen;
     
     
     
-    // Método para asignar la imagen desde la ventana de iniciar_sesion
+    
     public void setImage(Image imagen) {
         this.imagen = imagen;
-        this.repaint(); // Fuerza al panel a redibujarse con la nueva imagen
+        this.repaint(); 
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        // CORRECCIÓN: super siempre va en la primera línea
+       
         super.paintComponent(g);
         
         Graphics2D g2 = (Graphics2D) g;
@@ -42,20 +41,18 @@ public class ROUND_PANEL extends JPanel  {
         int x = (getWidth() - diametro) / 2;
         int y = (getHeight() - diametro) / 2;
         
-        // Dibuja el fondo del círculo (puedes cambiarlo a Color.WHITE o al rosa que tenías)
+        
         g2.setColor(new Color(245, 171, 185)); 
         g2.fillOval(x, y, diametro, diametro);
 
-        // SI HAY UNA IMAGEN ASIGNADA, LA RECORTA Y DIBUJA
+        
         if (imagen != null) {
             java.awt.Shape clipOriginal = g2.getClip();
             
             Ellipse2D.Double circuloRecorte = new Ellipse2D.Double(x, y, diametro, diametro);
             g2.setClip(circuloRecorte);
             
-            // Dibuja la imagen estirándose/adaptándose al diámetro del panel
             g2.drawImage(imagen, x, y, diametro, diametro, this);
-            
             g2.setClip(clipOriginal);
         }
     }
