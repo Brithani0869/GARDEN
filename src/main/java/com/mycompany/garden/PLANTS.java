@@ -12,13 +12,13 @@ package com.mycompany.garden;
 public class PLANTS extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PLANTS.class.getName());
-    // Variables para retener la información de la cadena de pantallas
+    
     private grounds pantallaPrincipal;
     private String nombreJardin;
     private String metrosJardin;
-    private String plantaSeleccionada = "Sin plantas"; // Valor por defecto
+    private String plantaSeleccionada = "Sin plantas";
 
-    // Constructor modificado para recibir los flujos de datos
+    
     public PLANTS(grounds pantallaPrincipal, String nombre, String metros) {
         this.pantallaPrincipal = pantallaPrincipal;
         this.nombreJardin = nombre;
@@ -40,11 +40,11 @@ public class PLANTS extends javax.swing.JFrame {
         jButton3.setFocusPainted(false);  
         
          jButton4.putClientProperty("FlatLaf.style",
-    "background:#1B5E20;" +
-    "foreground:#FFFFFF;" +
-    "borderWidth:0;" +
-    "focusWidth:0;" +
-    "arc:999;");
+        "background:#1B5E20;" +
+        "foreground:#FFFFFF;" +
+        "borderWidth:0;" +
+        "focusWidth:0;" +
+        "arc:999;");
          
        jButton8.setPreferredSize(new java.awt.Dimension(40, 40));
        jButton8.setSize(42, 42);
@@ -52,7 +52,7 @@ public class PLANTS extends javax.swing.JFrame {
         
         jPanel3.putClientProperty("FlatLaf.style", "arc: 30;");
         
-        // Asignamos eventos de selección rápida a tus botones de plantas
+        
         jButton5.addActionListener(e -> plantaSeleccionada = "Corona de Cristo");
         jButton7.addActionListener(e -> plantaSeleccionada = "Diffenbachia");
         jButton9.addActionListener(e -> plantaSeleccionada = "Arbol abundancia");
@@ -221,39 +221,37 @@ public class PLANTS extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
         if (this.pantallaPrincipal != null) {
-            // Instanciamos tu tarjeta 'intento' con los parámetros reales obtenidos
+            
             card nuevaTarjeta = new card(nombreJardin, metrosJardin, plantaSeleccionada);
             
-            // Forzamos las dimensiones requeridas para el BoxLayout vertical de grounds
+            
             nuevaTarjeta.setMaximumSize(new java.awt.Dimension(650, 150));
             nuevaTarjeta.setPreferredSize(new java.awt.Dimension(650, 150));
             nuevaTarjeta.setMinimumSize(new java.awt.Dimension(650, 150));
             nuevaTarjeta.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
             
-            // Inyectamos la tarjeta directamente en el jPanel3 de la pantalla grounds existente
+            
             this.pantallaPrincipal.getJPanel3().add(nuevaTarjeta);
             this.pantallaPrincipal.getJPanel3().add(javax.swing.Box.createVerticalStrut(10)); 
             
-            // Refrescamos la interfaz gráfica
+            
             this.pantallaPrincipal.getJPanel3().revalidate();
             this.pantallaPrincipal.getJPanel3().repaint();
             }
         
-        // Volvemos a hacer visible la ventana principal de Mis Jardines y cerramos esta
+        
         this.pantallaPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Pasamos la pantalla principal de regreso para no perder el rastro
-        ADD add = new ADD(this.pantallaPrincipal);
+                ADD add = new ADD(this.pantallaPrincipal);
         add.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       // Pasamos la pantalla principal de regreso al presionar el botón "atrás"
-        ADD add = new ADD(this.pantallaPrincipal);
+          ADD add = new ADD(this.pantallaPrincipal);
         add.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -262,7 +260,7 @@ public class PLANTS extends javax.swing.JFrame {
     private int radio;
     public PanelRedondeado(int radio) {
         this.radio = radio;
-        setOpaque(false); // Hace transparentes las esquinas rectas nativas
+        setOpaque(false); 
     }
     @Override
     protected void paintComponent(java.awt.Graphics g) {

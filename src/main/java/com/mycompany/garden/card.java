@@ -28,22 +28,18 @@ public class card extends javax.swing.JPanel {
         
         formatearDiseno();
     }
-   
-    // Centraliza el estilo y delega el dibujo sin romper el bloque protegido
-    // Centraliza el estilo y delega el dibujo sin romper el bloque protegido
-private void formatearDiseno() {
-    this.setSize(548, 152);
-    this.setOpaque(false); 
-    this.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 16, 12, 16));
     
-    // --- SOLUCIÓN CRÍTICA PARA EL CLICK ---
+    private void formatearDiseno() {
+        this.setSize(548, 152);
+        this.setOpaque(false); 
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 16, 12, 16));
+    
+    
     if (jPanel1 != null) {
         jPanel1.setOpaque(false);
-        // Desactivamos el panel contenedor para que no atrape los clics del mouse
         jPanel1.setEnabled(false); 
     }
     
-    // --- Configuración estética de tus botones con FlatLaf ---
     jButton1.setPreferredSize(new java.awt.Dimension(42, 42));
     jButton1.setSize(42, 42);
     jButton1.putClientProperty("FlatLaf.style", "background: #80C1DF; arc: 999; borderWidth: 0; focusWidth: 0;");
@@ -65,7 +61,7 @@ private void formatearDiseno() {
     jButton3.setFocusPainted(false);      
     jButton3.putClientProperty("FlatLaf.style", "background: #EF9FBC; borderWidth: 0; focusWidth: 0; arc: 999;");
     
-    // Forzamos a que los botones estén explícitamente al frente en el orden de capas
+   
     if (jPanel1 != null) {
         jPanel1.setComponentZOrder(jButton1, 0);
         jPanel1.setComponentZOrder(jButton2, 0);
@@ -134,7 +130,7 @@ private void formatearDiseno() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)

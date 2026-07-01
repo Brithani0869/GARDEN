@@ -19,7 +19,6 @@ public class Create_account extends javax.swing.JFrame {
         initComponents();
         this.setSize(800,700);
         
-        // Aplicamos el estilo redondeado a todos tus campos
         estilarCampoRedondeado(jTextField1);
         estilarCampoRedondeado(jTextField2);
         estilarCampoRedondeado(jTextField3);
@@ -47,40 +46,40 @@ public class Create_account extends javax.swing.JFrame {
         jButton4.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
     }
 
-   // Método Definitivo: Pinta el fondo blanco y el borde redondeado de forma segura
+   
     private void estilarCampoRedondeado(javax.swing.JTextField campo) {
-        // 1. IMPORTANTE: Lo dejamos en TRUE para que Swing no ignore el fondo blanco
+       
         campo.setOpaque(true); 
         
-        // 2. Cambiamos el color de fondo nativo a blanco
+       
         campo.setBackground(java.awt.Color.WHITE);
         
-        // 3. Usamos un borde personalizado que limpia las esquinas del fondo del contenedor padre
+       
         campo.setBorder(new javax.swing.border.AbstractBorder() {
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
                 g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
                 
-                // Buscamos el color de fondo del panel contenedor (el fondo verde de tu app)
+            
                 java.awt.Container parent = c.getParent();
                 if (parent != null) {
                     g2.setColor(parent.getBackground());
                     
-                    // Creamos un área para borrar las esquinas rígidas exteriores
+                    
                     java.awt.geom.Area esquinaExterior = new java.awt.geom.Area(new java.awt.Rectangle(x, y, width, height));
                     esquinaExterior.subtract(new java.awt.geom.Area(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, 15, 15)));
-                    g2.fill(esquinaExterior); // Pinta las esquinas externas del color verde del panel
+                    g2.fill(esquinaExterior); 
                 }
                 
-                // Pintamos el contorno gris redondeado del JTextField
+                
                 g2.setColor(new java.awt.Color(180, 180, 180));
                 g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15);
                 
                 g2.dispose();
             }
             
-            // Margen interno para que el texto no toque las curvas del borde
+           
             @Override
             public java.awt.Insets getBorderInsets(java.awt.Component c) {
                 return new java.awt.Insets(6, 12, 6, 12);

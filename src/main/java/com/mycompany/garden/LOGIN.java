@@ -19,35 +19,29 @@ public class LOGIN extends javax.swing.JFrame {
      * Creates new form LOGIN
      */
     public LOGIN() {
-        // 1. Inicializa los componentes creados en el diseñador gráfico de NetBeans
+       
         initComponents();
         
-        // 2. Ajustamos el tamaño inicial de la ventana
         this.setSize(800, 700);
-        this.setLocationRelativeTo(null); // Centra la ventana en la pantalla (Opcional pero recomendado)
+        this.setLocationRelativeTo(null); 
         
-        // --- CARGA DIRECTA DE LA IMAGEN EN EL COMPONENTE DEL DISEÑADOR ---
         try {
-            // Buscamos la imagen en tus recursos de Maven
+           
             java.net.URL rutaImg = getClass().getResource("/imagenes/icono.jpeg");
             
             if (rutaImg != null) {
                 ImageIcon iconoOriginal = new ImageIcon(rutaImg);
-                // Le pasamos la imagen al objeto que ya existe en tu pantalla de NetBeans
+                
                 panelredondo1.setImage(iconoOriginal.getImage());
-                System.out.println("✅ Imagen asignada con éxito a panelredondo1");
+                System.out.println("Imagen asignada con éxito a panelredondo1");
             } else {
-                System.out.println("❌ ERROR: No se encontró el archivo en /imagenes/icono.jpeg");
+                System.out.println("ERROR: No se encontró el archivo en /imagenes/icono.jpeg");
             }
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen: " + e.getMessage());
         }
         
-        // El bloque de AbsoluteLayout y AbsoluteConstraints ha sido eliminado 
-        // para no romper la estructura visual que ya creaste en NetBeans.
-
-        // --- CONFIGURACIÓN CON FLATLAF PARA LOS BOTONES ---
-       // --- CONFIGURACIÓN CON FLATLAF PARA LOS BOTONES ---
+        
         jButton1.putClientProperty("FlatLaf.style", ""
                 + "background: #1B4D2F;"
                 + "foreground: #FFFFFF;"
@@ -85,6 +79,7 @@ public class LOGIN extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         panelredondo1 = new com.mycompany.calis1.panelredondo();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -98,15 +93,25 @@ public class LOGIN extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(27, 77, 47));
 
+        jLabel2.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Instrucciones");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelredondo1Layout = new javax.swing.GroupLayout(panelredondo1);
@@ -120,8 +125,9 @@ public class LOGIN extends javax.swing.JFrame {
             .addGap(0, 194, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setText("VERDESMART");
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(27, 77, 47));
+        jLabel1.setText("VERDE  SMART");
 
         jButton2.setBackground(new java.awt.Color(217, 206, 159));
         jButton2.setText("CREAR CUENTA");
@@ -141,35 +147,37 @@ public class LOGIN extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(43, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(panelredondo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(panelredondo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(80, 80, 80))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(panelredondo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(41, 41, 41)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -188,11 +196,8 @@ public class LOGIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      // 1. Creamos y mostramos la nueva ventana (login2)
         login2 nuevaVentana = new login2();
         nuevaVentana.setVisible(true);
-        
-        // 2. Cerramos y liberamos la memoria de la ventana actual (LOGIN)
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -213,6 +218,7 @@ public class LOGIN extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private com.mycompany.calis1.panelredondo panelredondo1;

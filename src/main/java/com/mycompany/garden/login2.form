@@ -64,7 +64,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -191,7 +191,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
-            <Property name="columns" type="int" value="65"/>
+            <Property name="columns" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="Correo Electronico"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&#xd;&#xa;new javax.swing.border.AbstractBorder() { @Override public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) { java.awt.Graphics2D g2 = (java.awt.Graphics2D) g; g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON); g2.setColor(java.awt.Color.GRAY); g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15); } @Override public java.awt.Insets getBorderInsets(java.awt.Component c) { return new java.awt.Insets(4, 10, 4, 10); } }" type="code"/>
@@ -227,7 +227,7 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordField1">
           <Properties>
-            <Property name="columns" type="int" value="65"/>
+            <Property name="columns" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="jPasswordField1"/>
           </Properties>
         </Component>
