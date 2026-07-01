@@ -4,6 +4,8 @@
  */
 package com.mycompany.garden;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Brith
@@ -17,8 +19,25 @@ public class login2 extends javax.swing.JFrame {
      */
     public login2() {
         initComponents();
-         this.setSize(480, 465);
-         
+         this.setSize(800,700);
+         this.setLocationRelativeTo(null); // Centra la ventana en la pantalla (Opcional pero recomendado)
+        
+        // --- CARGA DIRECTA DE LA IMAGEN EN EL COMPONENTE DEL DISEÑADOR ---
+        try {
+            // Buscamos la imagen en tus recursos de Maven
+            java.net.URL rutaImg = getClass().getResource("/imagenes/icono.jpeg");
+            
+            if (rutaImg != null) {
+                ImageIcon iconoOriginal = new ImageIcon(rutaImg);
+                // Le pasamos la imagen al objeto que ya existe en tu pantalla de NetBeans
+                panelredondo1.setImage(iconoOriginal.getImage());
+                System.out.println("✅ Imagen asignada con éxito a panelredondo1");
+            } else {
+                System.out.println("❌ ERROR: No se encontró el archivo en /imagenes/icono.jpeg");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar la imagen: " + e.getMessage());
+        }
         jButton1.setContentAreaFilled(false); 
         jButton1.setBorderPainted(false);     
         jButton1.setFocusPainted(false); jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -28,9 +47,6 @@ public class login2 extends javax.swing.JFrame {
          jButton2.setContentAreaFilled(false); 
         jButton2.setBorderPainted(false);     
         jButton2.setFocusPainted(false); 
-        jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
-        jButton3.setSize(42, 42);
-        jButton3.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
         jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton4.setSize(42, 42);
         //jButton4.putClientProperty("FlatLaf.style", "background: #1B4D2F; arc: 999; borderWidth: 0; focusWidth: 0;");
@@ -38,8 +54,50 @@ public class login2 extends javax.swing.JFrame {
         jButton4.setBorderPainted(false);     
         jButton4.setFocusPainted(false);  
             
+         estilarCampoRedondeado(jTextField1);
+        estilarCampoRedondeado(jPasswordField1);
     }
 
+    // Método Definitivo: Pinta el fondo blanco y el borde redondeado de forma segura
+    private void estilarCampoRedondeado(javax.swing.JTextField campo) {
+        // 1. IMPORTANTE: Lo dejamos en TRUE para que Swing no ignore el fondo blanco
+        campo.setOpaque(true); 
+        
+        // 2. Cambiamos el color de fondo nativo a blanco
+        campo.setBackground(java.awt.Color.WHITE);
+        
+        // 3. Usamos un borde personalizado que limpia las esquinas del fondo del contenedor padre
+        campo.setBorder(new javax.swing.border.AbstractBorder() {
+            @Override
+            public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                
+                // Buscamos el color de fondo del panel contenedor (el fondo verde de tu app)
+                java.awt.Container parent = c.getParent();
+                if (parent != null) {
+                    g2.setColor(parent.getBackground());
+                    
+                    // Creamos un área para borrar las esquinas rígidas exteriores
+                    java.awt.geom.Area esquinaExterior = new java.awt.geom.Area(new java.awt.Rectangle(x, y, width, height));
+                    esquinaExterior.subtract(new java.awt.geom.Area(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, 15, 15)));
+                    g2.fill(esquinaExterior); // Pinta las esquinas externas del color verde del panel
+                }
+                
+                // Pintamos el contorno gris redondeado del JTextField
+                g2.setColor(new java.awt.Color(180, 180, 180));
+                g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15);
+                
+                g2.dispose();
+            }
+            
+            // Margen interno para que el texto no toque las curvas del borde
+            @Override
+            public java.awt.Insets getBorderInsets(java.awt.Component c) {
+                return new java.awt.Insets(6, 12, 6, 12);
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +119,7 @@ public class login2 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        panelredondo1 = new com.mycompany.garden.ROUND_PANEL();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -110,7 +169,7 @@ public class login2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(27, 77, 47));
         jLabel3.setText("Correo Electronico");
 
-        jTextField1.setColumns(35);
+        jTextField1.setColumns(65);
         jTextField1.setText("Correo Electronico");
         jTextField1.setBorder(
             new javax.swing.border.AbstractBorder() { @Override public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) { java.awt.Graphics2D g2 = (java.awt.Graphics2D) g; g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON); g2.setColor(java.awt.Color.GRAY); g2.drawRoundRect(x, y, width - 1, height - 1, 15, 15); } @Override public java.awt.Insets getBorderInsets(java.awt.Component c) { return new java.awt.Insets(4, 10, 4, 10); } });
@@ -125,53 +184,68 @@ public class login2 extends javax.swing.JFrame {
         jButton4.setText("Olvide Contraseña");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jPasswordField1.setColumns(35);
+        jPasswordField1.setColumns(65);
         jPasswordField1.setText("jPasswordField1");
+
+        javax.swing.GroupLayout panelredondo1Layout = new javax.swing.GroupLayout(panelredondo1);
+        panelredondo1.setLayout(panelredondo1Layout);
+        panelredondo1Layout.setHorizontalGroup(
+            panelredondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelredondo1Layout.setVerticalGroup(
+            panelredondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(140, 140, 140))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(297, 297, 297)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))))
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelredondo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGap(298, 298, 298))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(22, 22, 22)
+                .addGap(12, 12, 12)
+                .addComponent(panelredondo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,6 +273,9 @@ public class login2 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        grounds CARD = new grounds();
+        CARD.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -225,5 +302,6 @@ public class login2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private com.mycompany.garden.ROUND_PANEL panelredondo1;
     // End of variables declaration//GEN-END:variables
 }
